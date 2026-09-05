@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Japan 2026">
+<meta name="theme-color" content="#0f0f1a">
+<title>🇯🇵 Japan 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0f0f1a;color:#e8e8f0;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+:root{
+--bg0:#0f0f1a;--bg1:#16162a;--bg2:#1e1e35;--bg3:#252540;
+--bdr:#2a2a4a;--bdr2:#222238;
+--t1:#e8e8f0;--t2:#9090b0;--t3:#606080;--t4:#404060;
+--ac:#7c6aff;--ac2:#9d8fff;--acs:rgba(124,106,255,.18);--acb:rgba(124,106,255,.4);
+--pk:#ff6b9d;--pks:rgba(255,107,157,.15);--pkb:rgba(255,107,157,.4);
+--gn:#4ade80;--gns:rgba(74,222,128,.12);--gnb:rgba(74,222,128,.35);
+--yl:#fbbf24;--yls:rgba(251,191,36,.12);--ylb:rgba(251,191,36,.35);
+--rd:#f87171;--rds:rgba(248,113,113,.12);--rdb:rgba(248,113,113,.35);
+--bl:#60a5fa;--bls:rgba(96,165,250,.12);--blb:rgba(96,165,250,.35);
+--cy:#22d3ee;--cys:rgba(34,211,238,.12);--cyb:rgba(34,211,238,.35);
+--or:#fb923c;--ors:rgba(251,146,60,.12);--orb:rgba(251,146,60,.35);
+--nh:58px;--mw:580px;
+}
+.app{max-width:var(--mw);margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(15,15,26,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);padding-top:env(safe-area-inset-top,0)}
+.hdr-inner{display:flex;align-items:center;height:50px;padding:0 14px;gap:10px}
+.logo{font-size:17px;font-weight:800;color:var(--t1);letter-spacing:-.4px;flex-shrink:0;background:linear-gradient(135deg,var(--ac2),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hnav{display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end}
+.hnav::-webkit-scrollbar{display:none}
+.hnb{padding:5px 9px;font-size:11.5px;font-weight:600;color:var(--t3);border-radius:8px;white-space:nowrap;min-height:34px;transition:all .15s}
+.hnb.active{background:var(--acs);color:var(--ac2)}
+.hnb:active{opacity:.7}
+
+/* BOTTOM NAV */
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--mw);background:rgba(15,15,26,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--bdr);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom,0)}
+.bnb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 2px;min-height:var(--nh);color:var(--t4);font-size:9px;font-weight:600;transition:all .15s;min-width:44px}
+.bnb .ic{font-size:20px;line-height:1}
+.bnb.active{color:var(--ac2)}
+
+/* MAIN */
+.main{flex:1;overflow-y:auto;padding-bottom:calc(var(--nh) + env(safe-area-inset-bottom,0) + 8px)}
+.scr{display:none}.scr.active{display:block}
+
+/* PILLS / BADGES */
+.pill{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.bdg-tk{background:var(--bls);color:var(--bl);border:1px solid var(--blb)}
+.bdg-ky{background:var(--acs);color:var(--ac2);border:1px solid var(--acb)}
+.bdg-os{background:var(--gns);color:var(--gn);border:1px solid var(--gnb)}
+.bdg-hr{background:var(--rds);color:var(--rd);border:1px solid var(--rdb)}
+.bdg-ds{background:rgba(251,191,36,.15);color:var(--yl);border:1px solid var(--ylb)}
+.pill-h{background:var(--gns);color:var(--gn);border:1px solid var(--gnb)}
+.pill-v{background:var(--yls);color:var(--yl);border:1px solid var(--ylb)}
+.pill-w{background:var(--rds);color:var(--rd);border:1px solid var(--rdb)}
+.pill-ab{background:var(--ors);color:var(--or);border:1px solid var(--orb)}
+.pill-cat{background:var(--bg3);color:var(--t2);border:1px solid var(--bdr)}
+
+/* MAP LINKS */
+.mlink{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--bl);background:var(--bls);border:1px solid var(--blb);border-radius:6px;padding:3px 8px;white-space:nowrap;flex-shrink:0}
+.mlink:active{opacity:.7}
+.map-btn-f{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;font-size:13px;font-weight:600;color:var(--ac2);background:var(--acs);border:1px solid var(--acb);border-radius:10px;padding:11px;min-height:44px;margin-top:10px}
+.map-btn-f:active{opacity:.7}
+
+/* CARDS */
+.card{background:var(--bg1);border:1px solid var(--bdr);border-radius:16px;padding:18px;margin-bottom:12px}
+.card-sm{background:var(--bg2);border:1px solid var(--bdr2);border-radius:12px;padding:14px;margin-bottom:8px}
+
+/* SCREEN HEADER */
+.scrhdr{padding:20px 16px 14px;border-bottom:1px solid var(--bdr2)}
+.scr-title{font-size:22px;font-weight:800;color:var(--t1);letter-spacing:-.5px;margin-bottom:4px}
+.scr-sub{font-size:13px;color:var(--t2);margin-bottom:14px}
+
+/* CHIPS */
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{padding:7px 14px;font-size:12.5px;font-weight:600;color:var(--t3);background:var(--bg2);border:1px solid var(--bdr);border-radius:20px;white-space:nowrap;min-height:36px;min-width:44px;cursor:pointer;transition:all .15s}
+.chip.on{background:var(--acs);color:var(--ac2);border-color:var(--acb)}
+.chip:active{opacity:.7}
+
+/* ITEM LIST */
+.ilist li{font-size:13px;color:var(--t2);padding:7px 0 7px 14px;position:relative;line-height:1.5;border-bottom:1px solid var(--bdr2);display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.ilist li:last-child{border:none}
+.ilist li::before{content:"";position:absolute;left:3px;top:15px;width:5px;height:5px;border-radius:50%;background:var(--bdr);flex-shrink:0}
+.ilist li.halal-item::before{background:var(--gn)}
+
+/* DAY CARDS */
+.dc{background:var(--bg1);border:1px solid var(--bdr);border-radius:16px;margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.dc:has(.dc-body.open){border-color:var(--acb)}
+.dc-hdr{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;-webkit-user-select:none;min-height:68px}
+.dc-hdr:active{background:var(--bg2)}
+.dc-left{flex:1;min-width:0}
+.dc-num{font-size:11px;font-weight:700;color:var(--t3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.dc-title{font-size:15px;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px}
+.dc-pills{display:flex;gap:4px;flex-wrap:wrap}
+.dc-chev{font-size:20px;color:var(--t3);flex-shrink:0;transition:transform .25s;line-height:1}
+.dc-chev.open{transform:rotate(180deg)}
+.dc-body{display:none;padding:4px 16px 18px;border-top:1px solid var(--bdr2)}
+.dc-body.open{display:block}
+.dsec{margin-top:16px}
+.dsec-t{font-size:10px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.stay-row{font-size:13px;color:var(--t2);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.alert-w{background:var(--rds);border:1px solid var(--rdb);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:13px;color:var(--rd);line-height:1.5}
+
+/* EXPAND CONTROLS */
+.exrow{display:flex;gap:8px;margin-top:12px}
+.exbtn{padding:7px 14px;font-size:12px;font-weight:600;color:var(--t2);background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;min-height:36px;min-width:44px}
+.exbtn:active{background:var(--bg3)}
+
+/* PLACE CARDS */
+.pc{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:14px;margin-bottom:8px}
+.pc-name{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:7px}
+.pc-pills{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:7px}
+.pc-day{font-size:12px;color:var(--t3);font-weight:600;margin-bottom:6px}
+.pc-desc{font-size:13px;color:var(--t2);line-height:1.5}
+
+/* HOME HERO */
+.hero{background:linear-gradient(180deg,#1a1030 0%,var(--bg0) 100%);padding:24px 16px 20px;border-bottom:1px solid var(--bdr2)}
+.hero-flag{font-size:40px;text-align:center;margin-bottom:10px}
+.hero-title{font-size:30px;font-weight:900;color:var(--t1);letter-spacing:-1px;text-align:center;margin-bottom:4px}
+.hero-sub{font-size:13px;color:var(--t2);text-align:center;margin-bottom:20px}
+
+/* COUNTDOWN */
+.countdown{background:linear-gradient(135deg,rgba(124,106,255,.2),rgba(255,107,157,.12));border:1px solid var(--acb);border-radius:16px;padding:16px;text-align:center;margin-bottom:16px}
+.cd-num{font-size:48px;font-weight:900;background:linear-gradient(135deg,var(--ac2),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.cd-lbl{font-size:13px;color:var(--t2);margin-top:4px}
+.cd-date{font-size:11px;color:var(--t3);margin-top:3px}
+
+/* FLIGHT STRIP */
+.fl{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:14px;margin-bottom:10px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.fl-city{font-size:22px;font-weight:900;color:var(--t1)}
+.fl-info{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.4}
+.fl-arr{font-size:20px;text-align:center;color:var(--ac)}
+.fl-r{text-align:right}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.stat{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:12px 6px;text-align:center}
+.stat-n{font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--ac2),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:10px;color:var(--t3);font-weight:600;margin-top:2px}
+
+/* ROUTE */
+.route{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;gap:0}
+.route::-webkit-scrollbar{display:none}
+.rcity{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:62px;flex-shrink:0}
+.rdot{width:11px;height:11px;border-radius:50%;border:2px solid}
+.rcname{font-size:11px;font-weight:700;color:var(--t1)}
+.rcdates{font-size:9px;color:var(--t3);text-align:center}
+.rline{flex:1;height:2px;background:linear-gradient(90deg,var(--bdr),var(--bdr));min-width:16px}
+
+/* QUICK ACCESS */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.qa-btn{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:14px;text-align:left;cursor:pointer;transition:border-color .15s;display:flex;flex-direction:column;gap:4px;min-height:68px}
+.qa-btn:active{background:var(--bg3)}
+.qa-ic{font-size:20px}
+.qa-lbl{font-size:13px;font-weight:700;color:var(--t1)}
+.qa-sub{font-size:11px;color:var(--t2)}
+
+/* URGENT */
+.alert{border-radius:12px;padding:13px 14px;margin-bottom:8px;font-size:13px;line-height:1.5;display:flex;gap:10px;align-items:flex-start}
+.alert-r{background:var(--rds);border:1px solid var(--rdb);color:var(--rd)}
+.alert-y{background:var(--yls);border:1px solid var(--ylb);color:var(--yl)}
+.alert-g{background:var(--gns);border:1px solid var(--gnb);color:var(--gn)}
+.alert-ic{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* SECTION LABEL */
+.slbl{font-size:11px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 10px}
+
+/* STAYS */
+.stay-card{background:var(--bg1);border:1px solid var(--bdr);border-radius:16px;padding:18px;margin-bottom:12px}
+.stay-title{font-size:16px;font-weight:800;color:var(--t1);margin-bottom:4px}
+.stay-dates{font-size:12px;color:var(--t2);margin-bottom:12px}
+.stay-ref{background:var(--bg2);border:1px solid var(--bdr2);border-radius:10px;padding:12px;font-size:12.5px;color:var(--t2);line-height:1.8;margin-bottom:10px}
+.stay-ref strong{color:var(--t1)}
+.stay-warn{background:var(--yls);border:1px solid var(--ylb);border-radius:10px;padding:11px 13px;font-size:12px;color:var(--yl);line-height:1.5;margin-bottom:12px}
+.tel{display:inline-flex;align-items:center;gap:4px;color:var(--gn);background:var(--gns);border:1px solid var(--gnb);border-radius:6px;padding:4px 9px;font-size:12px;font-weight:600}
+
+/* BUDGET */
+.big-total{background:linear-gradient(135deg,rgba(124,106,255,.2),rgba(255,107,157,.1));border:1px solid var(--acb);border-radius:20px;padding:20px;text-align:center;margin-bottom:16px}
+.big-num{font-size:40px;font-weight:900;background:linear-gradient(135deg,var(--ac2),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px}
+.big-lbl{font-size:13px;color:var(--t2);margin-top:6px}
+
+/* TRANSPORT */
+.suica-card{background:linear-gradient(135deg,rgba(34,211,238,.15),rgba(96,165,250,.08));border:1px solid var(--cyb);border-radius:16px;padding:18px;margin-bottom:12px}
+.suica-card h3{font-size:16px;font-weight:800;color:var(--cy);margin-bottom:8px}
+.suica-card p{font-size:13px;color:var(--t2);line-height:1.6}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--bdr);margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:260px}
+th{background:var(--bg3);color:var(--t2);font-weight:700;font-size:11px;padding:9px 12px;text-align:left;border-bottom:1px solid var(--bdr)}
+td{padding:8px 12px;color:var(--t2);border-bottom:1px solid var(--bdr2);vertical-align:top}
+tr:last-child td{border:none}
+tr.tot td{color:var(--t1);font-weight:700;background:var(--bg2)}
+td.sv{color:var(--gn);font-weight:700}
+
+/* CHECKLIST */
+.cl-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--bdr2);cursor:pointer;min-height:48px}
+.cl-item:last-child{border:none}
+.cl-box{width:23px;height:23px;border:2px solid var(--bdr);border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px;transition:all .15s}
+.cl-item.done .cl-box{background:var(--gn);border-color:var(--gn);color:#000}
+.cl-con{flex:1}
+.cl-t{font-size:14px;color:var(--t1);font-weight:600;line-height:1.3}
+.cl-s{font-size:12px;color:var(--t2);margin-top:3px;line-height:1.4}
+.cl-item.done .cl-t{color:var(--t3);text-decoration:line-through;text-decoration-color:var(--t4)}
+
+/* PAD */
+.pad{padding:16px}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+@media(min-width:480px){.qa-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">&#127987;&#65039; Japan 2026</div>
+    <nav class="hnav">
+      <button class="hnb active" onclick="go('home')">Home</button>
+      <button class="hnb" onclick="go('plan')">Plan</button>
+      <button class="hnb" onclick="go('stays')">Stays</button>
+      <button class="hnb" onclick="go('places')">Places</button>
+      <button class="hnb" onclick="go('move')">Move</button>
+      <button class="hnb" onclick="go('budget')">Budget</button>
+      <button class="hnb" onclick="go('tips')">Tips</button>
+    </nav>
+  </div>
+</header>
+<main class="main" id="mc">
+
+<!-- HOME -->
+<div class="scr active" id="scr-home">
+  <div class="hero">
+    <div class="hero-flag">&#127987;&#65039;</div>
+    <h1 class="hero-title">Japan 2026</h1>
+    <p class="hero-sub">Halal Travel &middot; 22 Sep &ndash; 6 Oct &middot; Group of 4&ndash;6</p>
+    <div class="countdown" id="cdBox">
+      <div class="cd-num" id="cdNum">21</div>
+      <div class="cd-lbl" id="cdLbl">days until departure</div>
+      <div class="cd-date">Mon 21 Sep 2026 &middot; Etihad Airways &middot; JHB 09:50</div>
+    </div>
+    <div class="fl">
+      <div><div class="fl-city">JHB</div><div class="fl-info">Mon 21 Sep<br>09:50 &middot; Etihad</div></div>
+      <div class="fl-arr">&#9992;&#65039;</div>
+      <div class="fl-r"><div class="fl-city">NRT T1</div><div class="fl-info">Tue 22 Sep<br>12:45 arrival</div></div>
+    </div>
+    <div class="fl">
+      <div><div class="fl-city">NRT</div><div class="fl-info">Tue 6 Oct<br>18:00 &middot; Etihad</div></div>
+      <div class="fl-arr">&#9992;&#65039;</div>
+      <div class="fl-r"><div class="fl-city">JHB</div><div class="fl-info">Wed 7 Oct<br>08:20 arrival</div></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">15</div><div class="stat-l">Days</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Cities</div></div>
+      <div class="stat"><div class="stat-n">5</div><div class="stat-l">Stays</div></div>
+      <div class="stat"><div class="stat-n">&#10003;</div><div class="stat-l">Halal</div></div>
+    </div>
+  </div>
+  <div class="pad">
+    <div class="slbl">Route</div>
+    <div class="route">
+      <div class="rcity"><div class="rdot" style="border-color:var(--bl)"></div><div class="rcname">Tokyo</div><div class="rcdates">22&ndash;24 Sep</div></div>
+      <div class="rline"></div>
+      <div class="rcity"><div class="rdot" style="border-color:var(--ac2)"></div><div class="rcname">Kyoto</div><div class="rcdates">24&ndash;27 Sep</div></div>
+      <div class="rline"></div>
+      <div class="rcity"><div class="rdot" style="border-color:var(--gn)"></div><div class="rcname">Osaka</div><div class="rcdates">27&ndash;30 Sep</div></div>
+      <div class="rline"></div>
+      <div class="rcity"><div class="rdot" style="border-color:var(--rd)"></div><div class="rcname">Hiroshima</div><div class="rcdates">30 Sep&ndash;1 Oct</div></div>
+      <div class="rline"></div>
+      <div class="rcity"><div class="rdot" style="border-color:var(--bl)"></div><div class="rcname">Tokyo</div><div class="rcdates">1&ndash;6 Oct</div></div>
+    </div>
+    <div class="slbl">Quick Access</div>
+    <div class="qa-grid">
+      <button class="qa-btn" onclick="go('plan')"><span class="qa-ic">&#128197;</span><span class="qa-lbl">Itinerary</span><span class="qa-sub">All 15 days</span></button>
+      <button class="qa-btn" onclick="go('stays')"><span class="qa-ic">&#127968;</span><span class="qa-lbl">Stays</span><span class="qa-sub">5 Airbnb stays</span></button>
+      <button class="qa-btn" onclick="go('places')"><span class="qa-ic">&#129379;</span><span class="qa-lbl">Halal Dining</span><span class="qa-sub">All cities</span></button>
+      <button class="qa-btn" onclick="go('move')"><span class="qa-ic">&#128645;</span><span class="qa-lbl">Transport</span><span class="qa-sub">Suica &amp; tickets</span></button>
+      <button class="qa-btn" onclick="go('tips')"><span class="qa-ic">&#9989;</span><span class="qa-lbl">Pre-book</span><span class="qa-sub">Checklist</span></button>
+      <button class="qa-btn" onclick="go('budget')"><span class="qa-ic">&#165;</span><span class="qa-lbl">Budget</span><span class="qa-sub">~&#165;263,300 pp</span></button>
+    </div>
+    <div class="slbl">Urgent Reminders</div>
+    <div class="alert alert-r"><span class="alert-ic">&#9888;&#65039;</span><div><strong>DisneySea &mdash; 23 Sep:</strong> Sells out months ahead. Book now via the Tokyo Disney Resort app.</div></div>
+    <div class="alert alert-r"><span class="alert-ic">&#9888;&#65039;</span><div><strong>teamLab BioVortex Kyoto &mdash; 25 Sep:</strong> Timed entry. Book at teamLab.art before departure.</div></div>
+    <div class="alert alert-y"><span class="alert-ic">&#9888;&#65039;</span><div><strong>Shibuya Sky, Tokyo Skytree, Osaka Aquarium:</strong> Pre-book online to avoid long queues.</div></div>
+    <div class="alert alert-g"><span class="alert-ic">&#9745;&#65039;</span><div><strong>Suica IC Card:</strong> Load &#165;10,000 at Narita on arrival. Covers all city transport, convenience stores, and non-shinkansen trains.</div></div>
+  </div>
+</div>
+
+<!-- PLAN -->
+<div class="scr" id="scr-plan">
+  <div class="scrhdr">
+    <h2 class="scr-title">Itinerary</h2>
+    <p class="scr-sub">15 days &middot; 22 Sep &ndash; 6 Oct 2026</p>
+    <div class="chips" id="dayChips">
+      <button class="chip on" onclick="filterDays('all',this)">All 15</button>
+      <button class="chip" onclick="filterDays('tokyo',this)">&#128508; Tokyo</button>
+      <button class="chip" onclick="filterDays('kyoto',this)">&#9961;&#65039; Kyoto</button>
+      <button class="chip" onclick="filterDays('osaka',this)">&#127750; Osaka</button>
+      <button class="chip" onclick="filterDays('hiroshima',this)">&#128054; Hiroshima</button>
+    </div>
+    <div class="exrow">
+      <button class="exbtn" onclick="expandAll()">Expand all</button>
+      <button class="exbtn" onclick="collapseAll()">Collapse all</button>
+    </div>
+  </div>
+  <div class="pad" id="dayCont"><div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 1 &middot; Tue 22 Sep</div>
+    <div class="dc-title">Arrival in Tokyo</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Land at Narita Terminal 1 at 12:45 <a href="https://www.google.com/maps/search/?api=1&query=Narita%20Airport%20Terminal%201%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Collect eSIM and Suica IC Card at arrivals hall</li><li>Train to central Tokyo using Suica <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Station%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Check-in at Tokyo Airbnb Stay 1</li><li>Senso-ji Temple, Nakamise Shopping Street <a href="https://www.google.com/maps/search/?api=1&query=Senso-ji%20Temple%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Sumida River stroll <a href="https://www.google.com/maps/search/?api=1&query=Sumida%20River%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Tokyo Skytree views at dusk <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Skytree%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Sushiken Asakusa <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Sushiken%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Halal-ya Asakusa <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Halal-ya%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 1 (Sumida-ku area)</div></div></div></div>
+<div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 2 &middot; Wed 23 Sep</div>
+    <div class="dc-title">Tokyo DisneySea</div>
+    <div class="dc-pills"><span class="pill bdg-ds">&#10024; DisneySea</span> <span class="pill pill-h">&#129379; Halal</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Full day Tokyo DisneySea — Fantasy Springs, Tower of Terror, Journey to the Center of the Earth <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20DisneySea%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>JR Keiyo Line: Tokyo Station to Maihama <a href="https://www.google.com/maps/search/?api=1&query=Maihama%20Station%20Chiba%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Evening: Shibuya Crossing <a href="https://www.google.com/maps/search/?api=1&query=Shibuya%20Crossing%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Shibuya Sky observatory on return <a href="https://www.google.com/maps/search/?api=1&query=Shibuya%20Sky%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>DisneySea halal options at Magellan's and Casbah Food Court — confirm at park <span class="pill pill-v">Verify first</span> <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20DisneySea%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Ninja Yakiniku Asakusa <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Ninja%20Yakiniku%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="alert-w">&#9888;&#65039; Pre-book via the Tokyo Disney Resort app now. Premier Access fast-passes sell out within minutes of opening.</div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 1</div></div></div></div>
+<div class="dc" data-city="tokyo kyoto">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 3 &middot; Thu 24 Sep</div>
+    <div class="dc-title">Tokyo to Kyoto · Fushimi Inari</div>
+    <div class="dc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Morning train to Kyoto — buy individual ticket at station <a href="https://www.google.com/maps/search/?api=1&query=Kyoto%20Station%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Check-in at Kyoto Airbnb</li><li>Fushimi Inari Taisha — thousands of vermilion torii gates <a href="https://www.google.com/maps/search/?api=1&query=Fushimi%20Inari%20Taisha%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>JR Nara Line from Kyoto Station (approx. 10 min) <a href="https://www.google.com/maps/search/?api=1&query=Kyoto%20Station%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Evening: Gion District <a href="https://www.google.com/maps/search/?api=1&query=Gion%20District%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Yasaka Shrine <a href="https://www.google.com/maps/search/?api=1&query=Yasaka%20Shrine%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Hanamikoji lantern street at dusk <a href="https://www.google.com/maps/search/?api=1&query=Hanamikoji%20Street%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Istanbul Saray Kyoto <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Istanbul%20Saray%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Naritaya Kyoto — halal ramen (verify current status) <span class="pill pill-v">Verify first</span> <a href="https://www.google.com/maps/search/?api=1&query=Naritaya%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Kyoto Airbnb (Kamigyo Ward area)</div></div></div></div>
+<div class="dc" data-city="kyoto">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 4 &middot; Fri 25 Sep</div>
+    <div class="dc-title">Kinkaku-ji · Arashiyama · teamLab</div>
+    <div class="dc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-h">&#129379; Halal</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Friday Jumu'ah at Masjid Kyoto — 12:30 pm <a href="https://www.google.com/maps/search/?api=1&query=Masjid%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Kinkaku-ji (Golden Pavilion) — Bus 101 or 205 <a href="https://www.google.com/maps/search/?api=1&query=Kinkakuji%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Ryoan-ji Zen rock garden <a href="https://www.google.com/maps/search/?api=1&query=Ryoanji%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Arashiyama Bamboo Grove <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama%20Bamboo%20Grove%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Tenryu-ji Temple <a href="https://www.google.com/maps/search/?api=1&query=Tenryuji%20Temple%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Philosopher's Path <a href="https://www.google.com/maps/search/?api=1&query=Philosophers%20Path%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>teamLab BioVortex Kyoto — timed entry evening (pre-book at teamLab.art) <a href="https://www.google.com/maps/search/?api=1&query=teamLab%20BioVortex%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Halal restaurant near Arashiyama — verify via HalalNavi app <span class="pill pill-v">Verify first</span> <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="alert-w">&#9888;&#65039; teamLab BioVortex Kyoto: timed entry — pre-book at teamLab.art before departure.</div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Kyoto Airbnb</div></div></div></div>
+<div class="dc" data-city="kyoto">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 5 &middot; Sat 26 Sep</div>
+    <div class="dc-title">Kiyomizu-dera · Nijo Castle · Nishiki</div>
+    <div class="dc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Kiyomizu-dera Temple — Bus 206 <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizudera%20Temple%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Higashiyama historic lanes <a href="https://www.google.com/maps/search/?api=1&query=Higashiyama%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Sanjusangendo Hall <a href="https://www.google.com/maps/search/?api=1&query=Sanjusangendo%20Hall%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Nishiki Market — Kyoto's Kitchen <a href="https://www.google.com/maps/search/?api=1&query=Nishiki%20Market%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Nijo Castle (UNESCO) <a href="https://www.google.com/maps/search/?api=1&query=Nijo%20Castle%20Kyoto" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Ganko Nishiki — pre-confirm halal suitability before visiting <span class="pill pill-v">Verify first</span> <a href="https://www.google.com/maps/search/?api=1&query=Ganko%20Nishiki%20Kyoto%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Kyoto Airbnb</div></div></div></div>
+<div class="dc" data-city="kyoto osaka">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 6 &middot; Sun 27 Sep</div>
+    <div class="dc-title">Kyoto to Osaka · Osaka Castle</div>
+    <div class="dc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Train Kyoto to Osaka — approx. 15 min (buy individual ticket) <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Station%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Osaka Castle and surrounding park <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Castle%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Dotonbori Canal and Glico Man <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori%20Canal%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Den Den Town (Nipponbashi) — electronics and anime <a href="https://www.google.com/maps/search/?api=1&query=Den%20Den%20Town%20Nipponbashi%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>CHIBO Dotonbori — halal okonomiyaki <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=CHIBO%20Dotonbori%20Osaka%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Ramen Gyukotsu No Ou — halal ramen <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Ramen%20Gyukotsu%20No%20Ou%20Osaka%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Osaka Airbnb (Naniwa-ku area)</div></div></div></div>
+<div class="dc" data-city="osaka">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 7 &middot; Mon 28 Sep</div>
+    <div class="dc-title">Sumiyoshi · Amerika-mura · Shinsekai</div>
+    <div class="dc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Friday Jumu'ah at Osaka Masjid — 12:30 pm <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Masjid%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Sumiyoshi Taisha Shrine — Nankai Line from Namba <a href="https://www.google.com/maps/search/?api=1&query=Sumiyoshi%20Taisha%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Shitennoji Temple <a href="https://www.google.com/maps/search/?api=1&query=Shitennoji%20Temple%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Amerika-mura (Amemura) — vintage stores and streetwear <a href="https://www.google.com/maps/search/?api=1&query=Amerika-mura%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Shinsaibashi-suji shopping arcade <a href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi-suji%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Shinsekai and Tsutenkaku Tower at dusk <a href="https://www.google.com/maps/search/?api=1&query=Shinsekai%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Honolu Grande — halal Japanese near Namba <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Honolu%20Grande%20Osaka%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Osaka Airbnb</div></div></div></div>
+<div class="dc" data-city="osaka">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 8 &middot; Tue 29 Sep</div>
+    <div class="dc-title">Kuromon · Kaiyukan · Umeda Sky</div>
+    <div class="dc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Kuromon Ichiba Market — morning <a href="https://www.google.com/maps/search/?api=1&query=Kuromon%20Ichiba%20Market%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Osaka Aquarium Kaiyukan — Chuo Line to Osakako (book online) <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Aquarium%20Kaiyukan%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Tempozan Marketplace and Ferris Wheel <a href="https://www.google.com/maps/search/?api=1&query=Tempozan%20Ferris%20Wheel%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Umeda Sky Building — floating garden observatory at sunset <a href="https://www.google.com/maps/search/?api=1&query=Umeda%20Sky%20Building%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Halal restaurants near Kuromon Market — multiple options <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Kuromon%20Ichiba%20Market%20Osaka" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Osaka Airbnb</div></div></div></div>
+<div class="dc" data-city="osaka hiroshima">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 9 &middot; Wed 30 Sep</div>
+    <div class="dc-title">Osaka to Hiroshima · Peace Memorial</div>
+    <div class="dc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Train Osaka to Hiroshima — approx. 1h 10m (buy individual ticket) <a href="https://www.google.com/maps/search/?api=1&query=Hiroshima%20Station%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Hiroshima Peace Memorial Park <a href="https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Park" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Atomic Bomb Dome (Genbaku Dome) <a href="https://www.google.com/maps/search/?api=1&query=Atomic%20Bomb%20Dome%20Hiroshima" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Peace Memorial Museum — allow 2–3 hours <a href="https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Museum" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Hondori Shopping Arcade — evening <a href="https://www.google.com/maps/search/?api=1&query=Hondori%20Shopping%20Arcade%20Hiroshima" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Al-Salam Hiroshima — halal Middle Eastern <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Al-Salam%20Hiroshima%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Hiroshima Airbnb (Naka Ward — booking details to confirm)</div></div></div></div>
+<div class="dc" data-city="hiroshima tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 10 &middot; Thu 1 Oct</div>
+    <div class="dc-title">Miyajima Island then to Tokyo</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-h">&#129379; Halal</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Early ferry to Miyajima Island <a href="https://www.google.com/maps/search/?api=1&query=Miyajima%20Island%20Hiroshima" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Itsukushima Shrine and floating torii gate <a href="https://www.google.com/maps/search/?api=1&query=Itsukushima%20Shrine%20Hiroshima" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Deer on the island — walk to Daisho-in Temple <a href="https://www.google.com/maps/search/?api=1&query=Daisho-in%20Temple%20Miyajima" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Return ferry then train to Tokyo — approx. 4 hours (buy individual ticket) <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Station%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Evening check-in at Tokyo Airbnb Stay 2</li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Ninja Yakiniku Asakusa — halal wagyu <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Ninja%20Yakiniku%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="alert-w">&#9888;&#65039; Take the 07:00–07:30 ferry to Miyajima for low tide and fewer tour groups.</div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 2 (WATO Asakusabashi reference)</div></div></div></div>
+<div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 11 &middot; Fri 2 Oct</div>
+    <div class="dc-title">Jumu'ah · Imperial Palace · Akihabara</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Friday Jumu'ah at Tokyo Camii — 12:30 pm <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Camii%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Imperial Palace East Gardens <a href="https://www.google.com/maps/search/?api=1&query=Imperial%20Palace%20East%20Gardens%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Akihabara electric town — gaming, anime, electronics <a href="https://www.google.com/maps/search/?api=1&query=Akihabara%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Ueno Park and museums <a href="https://www.google.com/maps/search/?api=1&query=Ueno%20Park%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Odaiba and Yurikamome monorail views <a href="https://www.google.com/maps/search/?api=1&query=Odaiba%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Halal restaurants around Tokyo Camii area — Turkish, Middle Eastern, Malaysian options <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Camii%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 2</div></div></div></div>
+<div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 12 &middot; Sat 3 Oct</div>
+    <div class="dc-title">Ueno · Ameyoko · Shopping Day</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-h">&#129379; Halal</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Ameyoko Market — 400+ stalls under JR tracks, mornings best <a href="https://www.google.com/maps/search/?api=1&query=Ameyoko%20Market%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Hinoya Denim Ueno — Japanese selvedge and raw denim <a href="https://www.google.com/maps/search/?api=1&query=Hinoya%20Denim%20Ueno%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Harajuku: New Era Flagship <a href="https://www.google.com/maps/search/?api=1&query=New%20Era%20Flagship%20Harajuku%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>BEAMS Harajuku <a href="https://www.google.com/maps/search/?api=1&query=BEAMS%20Harajuku%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Takeshita Street <a href="https://www.google.com/maps/search/?api=1&query=Takeshita%20Street%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Omotesando: Red Wing Flagship Store, Minami-Aoyama (5-4-21 Minami-Aoyama, Minato-ku) <a href="https://www.google.com/maps/search/?api=1&query=Red%20Wing%20Flagship%20Minami-Aoyama%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Stumptown Coffee Tokyo — confirm current location before visiting <a href="https://www.google.com/maps/search/?api=1&query=Stumptown%20Coffee%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Clarks Flagship — confirm exact address on Clarks Japan site before visiting <a href="https://www.google.com/maps/search/?api=1&query=Clarks%20Harajuku%20Omotesando%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Halal-ya Asakusa — halal Japanese on return <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Halal-ya%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="alert-w">&#9888;&#65039; Stumptown Coffee and Clarks Flagship: confirm current addresses before visiting.</div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 2</div></div></div></div>
+<div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 13 &middot; Sun 4 Oct</div>
+    <div class="dc-title">Shinjuku · Nezu Shrine · Tokyo Tower</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-h">&#129379; Halal</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Nezu Shrine — mini torii tunnel, far less crowded than Fushimi Inari <a href="https://www.google.com/maps/search/?api=1&query=Nezu%20Shrine%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Shinjuku Gyoen National Garden <a href="https://www.google.com/maps/search/?api=1&query=Shinjuku%20Gyoen%20National%20Garden%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Shinjuku: Isetan, Takashimaya, Uniqlo flagship <a href="https://www.google.com/maps/search/?api=1&query=Isetan%20Shinjuku%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Tokyo Tower <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Tower%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Roppongi Hills — evening views <a href="https://www.google.com/maps/search/?api=1&query=Roppongi%20Hills%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Shinjuku-area halal restaurants — check HalalNavi app for current options <span class="pill pill-v">Verify first</span> <a href="https://www.google.com/maps/search/?api=1&query=Shinjuku%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 2</div></div></div></div>
+<div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 14 &middot; Mon 5 Oct</div>
+    <div class="dc-title">Tsukiji · Ginza · Farewell Dinner</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-h">&#129379; Halal</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Tsukiji Outer Market — fresh seafood breakfast <a href="https://www.google.com/maps/search/?api=1&query=Tsukiji%20Outer%20Market%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Hamarikyu Gardens <a href="https://www.google.com/maps/search/?api=1&query=Hamarikyu%20Gardens%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Ginza — luxury shopping and flagship stores <a href="https://www.google.com/maps/search/?api=1&query=Ginza%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Asakusa farewell dinner and Nakamise souvenir shopping <a href="https://www.google.com/maps/search/?api=1&query=Nakamise%20Shopping%20Street%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Stumptown Coffee Tokyo — specialty coffee (confirm address first) <a href="https://www.google.com/maps/search/?api=1&query=Stumptown%20Coffee%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="dsec"><div class="dsec-t">&#129379; Halal Dining</div><ul class="ilist"><li>Ninja Yakiniku Asakusa — farewell halal wagyu dinner <span class="pill pill-h">Halal &#10003;</span> <a href="https://www.google.com/maps/search/?api=1&query=Ninja%20Yakiniku%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Tendon Itsuki Ginza — tempura rice bowl (verify halal status before visiting) <span class="pill pill-v">Verify first</span> <a href="https://www.google.com/maps/search/?api=1&query=Tendon%20Itsuki%20Ginza%20Tokyo" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li></ul></div><div class="alert-w">&#9888;&#65039; Stumptown Coffee: confirm current Tokyo address before visiting.</div><div class="dsec"><div class="dsec-t">&#127968; Stay</div><div class="stay-row"><span class="pill pill-ab">Airbnb</span> Tokyo Airbnb Stay 2</div></div></div></div>
+<div class="dc" data-city="tokyo">
+<div class="dc-hdr" onclick="toggleD(this)" role="button" aria-expanded="false">
+  <div class="dc-left">
+    <div class="dc-num">Day 15 &middot; Tue 6 Oct</div>
+    <div class="dc-title">Departure · Narita Airport</div>
+    <div class="dc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span></div>
+  </div>
+  <span class="dc-chev" aria-hidden="true">&#8964;</span>
+</div>
+<div class="dc-body">
+  <div class="dsec"><div class="dsec-t">Activities</div><ul class="ilist"><li>Check out by 11:00 — luggage storage available if needed</li><li>Final morning coffee and convenience-store snacks</li><li>Keisei Line to Narita Airport — approx. 60 min from Katsushika base <a href="https://www.google.com/maps/search/?api=1&query=Narita%20Airport%20Terminal%201%20Japan" target="_blank" rel="noopener" class="mlink">&#128205; Map</a></li><li>Tax-refund desk before passport control at Narita Terminal 1</li><li>Etihad Airways departure 18:00 — arrive JHB 08:20 Wed 7 Oct</li></ul></div></div></div></div>
+</div>
+
+<!-- STAYS -->
+<div class="scr" id="scr-stays">
+  <div class="scrhdr">
+    <h2 class="scr-title">Stays</h2>
+    <p class="scr-sub">5 Airbnb stays across the trip</p>
+    <div class="chips">
+      <button class="chip on" onclick="filterStays('all',this)">All</button>
+      <button class="chip" onclick="filterStays('s1',this)">Tokyo 1</button>
+      <button class="chip" onclick="filterStays('s2',this)">Kyoto</button>
+      <button class="chip" onclick="filterStays('s3',this)">Osaka</button>
+      <button class="chip" onclick="filterStays('s4',this)">Hiroshima</button>
+      <button class="chip" onclick="filterStays('s5',this)">Tokyo 2</button>
+    </div>
+  </div>
+  <div class="pad">
+    <div class="alert alert-y"><span class="alert-ic">&#9888;&#65039;</span><div><strong>Confirm before travel:</strong> Reference addresses below are for area orientation only. Check your exact listing address and check-in instructions in your Airbnb reservation.</div></div>
+
+    <div class="stay-card" data-stay="s1">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div class="stay-title">Tokyo Airbnb Stay 1</div><span class="pill bdg-tk">&#128508; Tokyo</span></div>
+      <div class="stay-dates">22&ndash;24 Sep &middot; 2 nights &middot; Sumida-ku area</div>
+      <span class="pill pill-ab" style="margin-bottom:12px;display:inline-flex">Airbnb</span>
+      <div class="stay-ref"><strong>Ref property:</strong> Sotetsu Fresa Inn Tokyo-Tamachi<br><strong>Ref address:</strong> 3-14-21 Shibaura, Minato-ku, Tokyo 108-0023<br><strong>Phone:</strong> <a href="tel:+81354422031" class="tel">&#128222; +81 3-5442-2031</a><br><strong>Airbnb area:</strong> 1-chome-51-2 Kyojima, Sumida City 131-0046</div>
+      <div class="stay-warn">&#9888; Confirm your exact Airbnb listing address and check-in instructions before departure.</div>
+      <div class="slbl" style="margin-top:0">Key connections</div>
+      <ul class="ilist">
+        <li>Senso-ji Temple and Nakamise &mdash; 10 min walk <a href="https://www.google.com/maps/search/?api=1&query=Senso-ji+Temple+Tokyo" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Tokyo Skytree &mdash; 10 min walk <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Skytree" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>DisneySea (23 Sep) &mdash; Keiyo Line from Tokyo Station <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Station+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+      <a href="https://www.google.com/maps/search/?api=1&query=1-51-2+Kyojima+Sumida+City+Tokyo" target="_blank" class="map-btn-f">&#128205; Open area in Google Maps</a>
+    </div>
+
+    <div class="stay-card" data-stay="s2">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div class="stay-title">Kyoto Airbnb</div><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span></div>
+      <div class="stay-dates">24&ndash;27 Sep &middot; 3 nights &middot; Kamigyo Ward area</div>
+      <span class="pill pill-ab" style="margin-bottom:12px;display:inline-flex">Airbnb</span>
+      <div class="stay-ref"><strong>Ref property:</strong> Rakuro Kyoto by THE SHARE HOTELS<br><strong>Ref address:</strong> 186 Joshinyoko-cho, Nakagyo-ku, Kyoto 604-0867<br><strong>Phone:</strong> <a href="tel:+81752210960" class="tel">&#128222; +81 75-221-0960</a><br><strong>Airbnb area:</strong> Sakuancho, Kamigyo Ward, Kyoto 602-8304</div>
+      <div class="stay-warn">&#9888; Confirm your exact Airbnb listing address and check-in instructions before departure.</div>
+      <div class="slbl" style="margin-top:0">Key connections</div>
+      <ul class="ilist">
+        <li>Fushimi Inari &mdash; JR Nara Line from Kyoto Station <a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Kinkaku-ji &mdash; City Bus 101 or 205 <a href="https://www.google.com/maps/search/?api=1&query=Kinkakuji+Kyoto+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Arashiyama &mdash; JR Sagano Line <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Masjid Kyoto &mdash; 10 min walk (Jumu'ah 12:30 pm Day 4) <a href="https://www.google.com/maps/search/?api=1&query=Masjid+Kyoto+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sakuancho+Kamigyo+Ward+Kyoto+Japan" target="_blank" class="map-btn-f">&#128205; Open area in Google Maps</a>
+    </div>
+
+    <div class="stay-card" data-stay="s3">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div class="stay-title">Osaka Airbnb</div><span class="pill bdg-os">&#127750; Osaka</span></div>
+      <div class="stay-dates">27&ndash;30 Sep &middot; 3 nights &middot; Naniwa-ku area</div>
+      <span class="pill pill-ab" style="margin-bottom:12px;display:inline-flex">Airbnb</span>
+      <div class="stay-ref"><strong>Ref property:</strong> Eslead Hotel Osaka Tsuruhashi<br><strong>Ref address:</strong> 16-3 Ajiharacho, Tennoji-ku, Osaka 543-0023<br><strong>Phone:</strong> <a href="tel:+81667185881" class="tel">&#128222; +81 6-6718-5881</a><br><strong>Airbnb area:</strong> Daikoku 1-2-22, Naniwa-ku, Osaka 556-0014</div>
+      <div class="stay-warn">&#9888; Confirm your exact Airbnb listing address and check-in instructions before departure.</div>
+      <div class="slbl" style="margin-top:0">Key connections</div>
+      <ul class="ilist">
+        <li>Namba and Dotonbori &mdash; 2 stops north (Midosuji Line) <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Canal+Osaka" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Osaka Castle &mdash; 20 min by metro (Tanimachi Line) <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Osaka Aquarium &mdash; Chuo Line to Osakako <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Aquarium+Kaiyukan+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Osaka Masjid &mdash; Nishi-ku (Jumu'ah 12:30 pm Day 7) <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Masjid+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+      <a href="https://www.google.com/maps/search/?api=1&query=Naniwa-ku+Osaka+Japan" target="_blank" class="map-btn-f">&#128205; Open area in Google Maps</a>
+    </div>
+
+    <div class="stay-card" data-stay="s4">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div class="stay-title">Hiroshima Airbnb</div><span class="pill bdg-hr">&#128054; Hiroshima</span></div>
+      <div class="stay-dates">30 Sep &ndash; 1 Oct &middot; 1 night &middot; Naka Ward</div>
+      <span class="pill pill-ab" style="margin-bottom:12px;display:inline-flex">Airbnb</span>
+      <div class="stay-ref"><strong>Ref address:</strong> 1-chome-3-25 Tokaichimachi, Naka Ward, Hiroshima 730-0805<br><strong>Phone:</strong> To confirm from booking</div>
+      <div class="stay-warn">&#9888; Booking details to confirm. Verify phone, check-in time and exact address in your Airbnb reservation before departure.</div>
+      <div class="slbl" style="margin-top:0">Key connections</div>
+      <ul class="ilist">
+        <li>Peace Memorial Park &mdash; 8 min walk <a href="https://www.google.com/maps/search/?api=1&query=Hiroshima+Peace+Memorial+Park" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Atomic Bomb Dome &mdash; 10 min walk <a href="https://www.google.com/maps/search/?api=1&query=Atomic+Bomb+Dome+Hiroshima" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Miyajima (1 Oct) &mdash; tram + JR Ferry <a href="https://www.google.com/maps/search/?api=1&query=Miyajima+Island+Hiroshima" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+      <a href="https://www.google.com/maps/search/?api=1&query=1-3-25+Tokaichimachi+Naka+Ward+Hiroshima+Japan" target="_blank" class="map-btn-f">&#128205; Open area in Google Maps</a>
+    </div>
+
+    <div class="stay-card" data-stay="s5">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div class="stay-title">Tokyo Airbnb Stay 2</div><span class="pill bdg-tk">&#128508; Tokyo</span></div>
+      <div class="stay-dates">1&ndash;6 Oct &middot; 5 nights &middot; Katsushika area</div>
+      <span class="pill pill-ab" style="margin-bottom:12px;display:inline-flex">Airbnb</span>
+      <div class="stay-ref"><strong>Ref property:</strong> WATO Asakusabashi<br><strong>Ref address:</strong> 111-0053 Taito-ku, Tokyo &middot; 470m from Asakusabashi Stn<br><strong>Phone:</strong> <a href="tel:+819027679107" class="tel">&#128222; +81 90-2767-9107</a><br><strong>Airbnb area:</strong> 3-chome-22-16 Higashitateishi, Katsushika City 124-0013</div>
+      <div class="stay-warn">&#9888; Confirm your exact Airbnb listing address and check-in instructions before departure.</div>
+      <div class="slbl" style="margin-top:0">Key connections</div>
+      <ul class="ilist">
+        <li>Asakusa and Senso-ji &mdash; 15 min by Keisei Line <a href="https://www.google.com/maps/search/?api=1&query=Senso-ji+Temple+Tokyo" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Akihabara and Ueno &mdash; 20 min by JR Joban Line <a href="https://www.google.com/maps/search/?api=1&query=Akihabara+Tokyo" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Harajuku (BEAMS, New Era, Red Wing) &mdash; 40 min by metro <a href="https://www.google.com/maps/search/?api=1&query=Harajuku+Tokyo" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Tokyo Camii &mdash; (Jumu'ah 12:30 pm Day 11) <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Camii+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Narita Airport &mdash; Keisei Line direct, approx. 60 min <a href="https://www.google.com/maps/search/?api=1&query=Narita+Airport+Terminal+1+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+      <a href="https://www.google.com/maps/search/?api=1&query=3-22-16+Higashitateishi+Katsushika+City+Tokyo+Japan" target="_blank" class="map-btn-f">&#128205; Open area in Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- PLACES -->
+<div class="scr" id="scr-places">
+  <div class="scrhdr">
+    <h2 class="scr-title">Places</h2>
+    <p class="scr-sub">Attractions, halal dining, mosques and shopping</p>
+    <div class="chips" id="pCityChips">
+      <button class="chip on" onclick="fPC('all',this)">All cities</button>
+      <button class="chip" onclick="fPC('tokyo',this)">&#128508; Tokyo</button>
+      <button class="chip" onclick="fPC('kyoto',this)">&#9961;&#65039; Kyoto</button>
+      <button class="chip" onclick="fPC('osaka',this)">&#127750; Osaka</button>
+      <button class="chip" onclick="fPC('hiroshima',this)">&#128054; Hiroshima</button>
+    </div>
+    <div class="chips" style="margin-top:8px" id="pCatChips">
+      <button class="chip on" data-cat="all" onclick="fPCat('all',this)">All</button>
+      <button class="chip" data-cat="culture" onclick="fPCat('culture',this)">&#127963;&#65039; Attractions</button>
+      <button class="chip" data-cat="prayer" onclick="fPCat('prayer',this)">&#128332;&#65039; Prayer</button>
+      <button class="chip" data-cat="halal" onclick="fPCat('halal',this)">&#129379; Halal</button>
+      <button class="chip" data-cat="shop" onclick="fPCat('shop',this)">&#128717;&#65039; Shopping</button>
+    </div>
+  </div>
+  <div class="pad" id="plCont"><div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Senso-ji Temple</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 1</div>
+  <div class="pc-desc">Tokyo's oldest temple (628 AD). Visit at dusk or early morning to avoid crowds.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Senso-ji%20Temple%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Tokyo Skytree</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  <div class="pc-day">&#128197; Day 1</div>
+  <div class="pc-desc">World's tallest tower at 634m. Pre-book Tembo Galleria online. ¥2,100–3,400.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Skytree%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Tokyo DisneySea</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  <div class="pc-day">&#128197; Day 2 (23 Sep)</div>
+  <div class="pc-desc">Fantasy Springs, Tower of Terror, Journey to the Center of the Earth. Full day. ¥10,900+.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20DisneySea%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Shibuya Crossing</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 2 evening</div>
+  <div class="pc-desc">The famous scramble crossing. Best viewed from upper floors of surrounding buildings.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Shibuya%20Crossing%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Shibuya Sky</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  <div class="pc-day">&#128197; Day 2 evening</div>
+  <div class="pc-desc">360° rooftop observatory above Shibuya. Best at dusk. ¥2,000.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Shibuya%20Sky%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Imperial Palace East Gardens</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 11</div>
+  <div class="pc-desc">Former Edo Castle grounds. Free entry. Closed Mon and Fri.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Imperial%20Palace%20East%20Gardens%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Akihabara</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 11</div>
+  <div class="pc-desc">World's largest electronics and anime district. Multi-floor arcades, figures, gadgets.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Akihabara%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Ueno Park</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 11</div>
+  <div class="pc-desc">Large park with major museums, Ueno Zoo, and Shinobazu Pond.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ueno%20Park%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Odaiba</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 11</div>
+  <div class="pc-desc">Artificial island with Yurikamome monorail views, shopping malls and waterfront.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Odaiba%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Nezu Shrine</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 13</div>
+  <div class="pc-desc">Mini torii tunnel, far less crowded than Fushimi Inari.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Nezu%20Shrine%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Tokyo Tower</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 13</div>
+  <div class="pc-desc">Iconic 333m red-and-white tower. Great views at night.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Tower%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Roppongi Hills</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 13 evening</div>
+  <div class="pc-desc">Mori Art Museum and Mori Tower 360° observatory.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Roppongi%20Hills%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Tsukiji Outer Market</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 14</div>
+  <div class="pc-desc">Fresh seafood stalls, tamagoyaki, matcha sweets. Go early from 08:00.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tsukiji%20Outer%20Market%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Hamarikyu Gardens</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 14</div>
+  <div class="pc-desc">Tidal garden with a tea house on the water, surrounded by skyscrapers.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Hamarikyu%20Gardens%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="culture">
+  <div class="pc-name">Ginza</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 14</div>
+  <div class="pc-desc">Tokyo's luxury district. Uniqlo global flagship (12 floors), Apple Store, luxury brands.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ginza%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Fushimi Inari Taisha</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 3</div>
+  <div class="pc-desc">10,000 vermilion torii gates on Mt Inari. Full hike 2–4 hours. Go early.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Fushimi%20Inari%20Taisha%20Kyoto" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Gion District</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 3 evening</div>
+  <div class="pc-desc">Kyoto's historic geisha district. Hanamikoji street is best at dusk.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Gion%20District%20Kyoto" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Kinkaku-ji (Golden Pavilion)</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 4</div>
+  <div class="pc-desc">Gold-leaf Zen temple reflected in a mirror pond. Arrive early to beat crowds.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Kinkakuji%20Kyoto%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Ryoan-ji</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 4</div>
+  <div class="pc-desc">Japan's most famous Zen rock garden. 15 stones — you can never see them all at once.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ryoanji%20Kyoto%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Arashiyama Bamboo Grove</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 4</div>
+  <div class="pc-desc">Towering bamboo that rustles in the wind. Combine with Tenryu-ji and Oi River boat ride.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama%20Bamboo%20Grove%20Kyoto" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">teamLab BioVortex Kyoto</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  <div class="pc-day">&#128197; Day 4 (25 Sep) evening</div>
+  <div class="pc-desc">Immersive digital art — biological patterns, light and motion. Timed entry. Pre-book at teamLab.art. ¥3,200+.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=teamLab%20BioVortex%20Kyoto%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Kiyomizu-dera Temple</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 5</div>
+  <div class="pc-desc">UNESCO World Heritage. Wooden stage with no nails. Spectacular at dusk.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizudera%20Temple%20Kyoto" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Nijo Castle</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 5</div>
+  <div class="pc-desc">UNESCO — Tokugawa palace with nightingale floors that squeak to detect intruders.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Nijo%20Castle%20Kyoto" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="culture">
+  <div class="pc-name">Nishiki Market</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 5</div>
+  <div class="pc-desc">Kyoto's Kitchen — 400m covered arcade with pickles, tofu, street food and kitchenware.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Nishiki%20Market%20Kyoto" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Osaka Castle</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 6</div>
+  <div class="pc-desc">Magnificent 16th-century castle with a modern museum inside. Free to enter the park.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Castle%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Dotonbori Canal and Glico Man</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 6 evening</div>
+  <div class="pc-desc">Osaka's neon entertainment canal — Glico Man, giant crab, street food. Best at night.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori%20Canal%20Osaka" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Amerika-mura (Amemura)</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 7</div>
+  <div class="pc-desc">Osaka's answer to Harajuku — vintage stores, streetwear, independent labels.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Amerika-mura%20Osaka" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Shinsekai and Tsutenkaku Tower</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 7 at dusk</div>
+  <div class="pc-desc">Retro 1920s entertainment district. Tsutenkaku Tower and kushikatsu restaurants.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Shinsekai%20Osaka" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Kuromon Ichiba Market</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 8</div>
+  <div class="pc-desc">400+ stalls — Osaka's kitchen. Fresh seafood, wagyu, street food. Mornings best.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Kuromon%20Ichiba%20Market%20Osaka" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Osaka Aquarium Kaiyukan</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span> <span class="pill pill-w">&#9888; Pre-book</span></div>
+  <div class="pc-day">&#128197; Day 8</div>
+  <div class="pc-desc">Massive whale shark tank — one of the world's largest aquariums. Book online. ¥2,400.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Aquarium%20Kaiyukan%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="culture">
+  <div class="pc-name">Umeda Sky Building</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 8 at sunset</div>
+  <div class="pc-desc">Futuristic skyscraper with a floating garden rooftop observatory. Best at sunset.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Umeda%20Sky%20Building%20Osaka" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="hiroshima" data-cat="culture">
+  <div class="pc-name">Hiroshima Peace Memorial Park</div>
+  <div class="pc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 9</div>
+  <div class="pc-desc">One of the world's most moving memorial sites. Allow a full morning.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Park" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="hiroshima" data-cat="culture">
+  <div class="pc-name">Atomic Bomb Dome (Genbaku Dome)</div>
+  <div class="pc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 9</div>
+  <div class="pc-desc">UNESCO World Heritage — the building left standing nearest the 1945 epicentre.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Atomic%20Bomb%20Dome%20Hiroshima" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="hiroshima" data-cat="culture">
+  <div class="pc-name">Peace Memorial Museum</div>
+  <div class="pc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 9</div>
+  <div class="pc-desc">Allow 2–3 hours. Essential context. ¥200 entry.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Museum" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="hiroshima" data-cat="culture">
+  <div class="pc-name">Miyajima Island</div>
+  <div class="pc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 10</div>
+  <div class="pc-desc">Floating torii gate, Itsukushima Shrine, deer, and Daisho-in Temple.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Miyajima%20Island%20Hiroshima" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="hiroshima" data-cat="culture">
+  <div class="pc-name">Itsukushima Shrine</div>
+  <div class="pc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-cat">&#127963;&#65039; Attraction</span></div>
+  <div class="pc-day">&#128197; Day 10</div>
+  <div class="pc-desc">Floating shrine on Miyajima. Visit at low tide to walk to the torii gate.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Itsukushima%20Shrine%20Hiroshima" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="prayer">
+  <div class="pc-name">Tokyo Camii</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128332;&#65039; Prayer</span></div>
+  <div class="pc-day">&#128197; Days 2 & 11</div>
+  <div class="pc-desc">Japan's largest mosque in Harajuku. Friday Jumu'ah at 12:30 pm on Days 2 and 11.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Camii%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="prayer">
+  <div class="pc-name">Masjid Kyoto</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#128332;&#65039; Prayer</span></div>
+  <div class="pc-day">&#128197; Day 4</div>
+  <div class="pc-desc">10 min walk from Kamigyo Ward base. Friday Jumu'ah at 12:30 pm on Day 4.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Masjid%20Kyoto%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="prayer">
+  <div class="pc-name">Osaka Masjid (Nishi-ku)</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#128332;&#65039; Prayer</span></div>
+  <div class="pc-day">&#128197; Day 7</div>
+  <div class="pc-desc">Friday Jumu'ah at 12:30 pm on Day 7.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Masjid%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="prayer">
+  <div class="pc-name">Narita Airport T1 Prayer Room</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128332;&#65039; Prayer</span></div>
+  <div class="pc-day">&#128197; Days 1 & 15</div>
+  <div class="pc-desc">Prayer room and wudu facilities at Narita Terminal 1 on arrival and departure.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Narita%20Airport%20Terminal%201%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="halal">
+  <div class="pc-name">Sushiken Asakusa</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Days 1 & 14</div>
+  <div class="pc-desc">Halal-certified sushi near Senso-ji. High-quality fish, English menu.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Sushiken%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="halal">
+  <div class="pc-name">Halal-ya Asakusa</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Days 1 & 12</div>
+  <div class="pc-desc">Halal ramen, tempura and yakitori near Senso-ji. Casual and good for the group.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Halal-ya%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="halal">
+  <div class="pc-name">Ninja Yakiniku Asakusa</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Days 2, 10 & 14</div>
+  <div class="pc-desc">Halal wagyu beef yakiniku — grill at your table. A4/A5 Japanese beef. Book ahead for evenings.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ninja%20Yakiniku%20Asakusa%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="halal">
+  <div class="pc-name">Tendon Itsuki Ginza</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-v">Verify</span></div>
+  <div class="pc-day">&#128197; Day 14</div>
+  <div class="pc-desc">Renowned tempura rice bowl in Ginza. Verify halal status before visiting.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tendon%20Itsuki%20Ginza%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="halal">
+  <div class="pc-name">Istanbul Saray Kyoto</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Days 3 & 6</div>
+  <div class="pc-desc">Halal Turkish restaurant 5 min from Kyoto Station. Doner kebab, mixed grill plates.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Istanbul%20Saray%20Kyoto%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="kyoto" data-cat="halal">
+  <div class="pc-name">Naritaya Kyoto</div>
+  <div class="pc-pills"><span class="pill bdg-ky">&#9961;&#65039; Kyoto</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-v">Verify</span></div>
+  <div class="pc-day">&#128197; Days 3–5</div>
+  <div class="pc-desc">Halal ramen — verify current certification status before visiting.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Naritaya%20Kyoto%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="halal">
+  <div class="pc-name">CHIBO Dotonbori</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Day 6</div>
+  <div class="pc-desc">Halal okonomiyaki at the famous Dotonbori branch. Theatrical cooking experience.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=CHIBO%20Dotonbori%20Osaka%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="halal">
+  <div class="pc-name">Ramen Gyukotsu No Ou</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Days 6–8</div>
+  <div class="pc-desc">Halal beef bone ramen — rich deep broth. Near Namba.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ramen%20Gyukotsu%20No%20Ou%20Osaka%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="osaka" data-cat="halal">
+  <div class="pc-name">Honolu Grande</div>
+  <div class="pc-pills"><span class="pill bdg-os">&#127750; Osaka</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Day 7</div>
+  <div class="pc-desc">Halal Japanese set meals — rice, miso, grilled options. Casual and affordable.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Honolu%20Grande%20Osaka%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="hiroshima" data-cat="halal">
+  <div class="pc-name">Al-Salam Hiroshima</div>
+  <div class="pc-pills"><span class="pill bdg-hr">&#128054; Hiroshima</span> <span class="pill pill-cat">&#129379; Halal Dining</span> <span class="pill pill-h">&#10003; Halal</span></div>
+  <div class="pc-day">&#128197; Day 9</div>
+  <div class="pc-desc">Halal Middle Eastern restaurant in Hiroshima city centre.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Al-Salam%20Hiroshima%20Japan" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Ameyoko Market</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Day 12</div>
+  <div class="pc-desc">400+ stalls under JR Yamanote tracks — sportswear, sneakers, foods, cosmetics. Cash preferred. Mornings best.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ameyoko%20Market%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Hinoya Denim</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Day 12</div>
+  <div class="pc-desc">Tokyo institution for Japanese selvedge and raw denim — Japan Blue, Oni, Samurai Jeans, Momotaro.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Hinoya%20Denim%20Ueno%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">New Era Flagship (Harajuku)</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Day 12</div>
+  <div class="pc-desc">Japan-only colourways, collaborations, and fitted caps. Custom fitting service available.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=New%20Era%20Flagship%20Harajuku%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">BEAMS Harajuku</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Day 12</div>
+  <div class="pc-desc">Japan's iconic multi-brand lifestyle store. Japanese-exclusive streetwear and tailored pieces.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=BEAMS%20Harajuku%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Red Wing Flagship Store</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Day 12</div>
+  <div class="pc-desc">Most complete Red Wing stockist in Asia. Heritage boots, exclusive Japan colourways. Address: 5-4-21 Minami-Aoyama, Minato-ku, Tokyo.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Red%20Wing%20Flagship%20Minami-Aoyama%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Stumptown Coffee Tokyo</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span> <span class="pill pill-v">Confirm address</span></div>
+  <div class="pc-day">&#128197; Days 12 & 14</div>
+  <div class="pc-desc">Portland-origin specialty coffee roaster. Confirm current Tokyo address before visiting.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Stumptown%20Coffee%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Clarks Flagship (Harajuku/Omotesando)</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span> <span class="pill pill-v">Confirm address</span></div>
+  <div class="pc-day">&#128197; Day 12</div>
+  <div class="pc-desc">Japan exclusives: Desert Boot and Wallabee collaborations. Confirm exact address on Clarks Japan site first.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Clarks%20Harajuku%20Omotesando%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Isetan Shinjuku</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Day 13</div>
+  <div class="pc-desc">Premium department store. Great food hall in the basement. Tax-free available.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Isetan%20Shinjuku%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div>
+<div class="pc" data-city="tokyo" data-cat="shop">
+  <div class="pc-name">Nakamise Shopping Street</div>
+  <div class="pc-pills"><span class="pill bdg-tk">&#128508; Tokyo</span> <span class="pill pill-cat">&#128717;&#65039; Shopping</span></div>
+  <div class="pc-day">&#128197; Days 1 & 14</div>
+  <div class="pc-desc">Traditional crafts, matcha sweets, ningyo dolls — best for authentic Japanese souvenirs.</div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Nakamise%20Shopping%20Street%20Tokyo" target="_blank" rel="noopener" class="map-btn-f">&#128205; Open in Google Maps</a>
+</div></div>
+</div>
+
+<!-- TRANSPORT / MOVE -->
+<div class="scr" id="scr-move">
+  <div class="scrhdr"><h2 class="scr-title">Transport</h2><p class="scr-sub">Suica IC Card and city-by-city guidance</p></div>
+  <div class="pad">
+    <div class="suica-card">
+      <h3>&#128179; Suica IC Card &mdash; Your Main Travel Card</h3>
+      <p>No JR Pass on this trip. Load <strong>&#165;10,000</strong> at Narita Airport on arrival. The Suica card covers all inter-city and city rail, metro lines, city buses, and convenience stores nationwide. Top up at any station or 7-Eleven ATM.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:10px">Key individual tickets to buy</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Journey</th><th>Approx. fare</th><th>How</th></tr></thead>
+        <tbody>
+          <tr><td>Narita Airport to central Tokyo</td><td>&#165;1,290–3,070</td><td>Keisei Skyliner or Narita Express</td></tr>
+          <tr><td>Tokyo to Kyoto (Shinkansen)</td><td>&#165;13,320</td><td>Buy at Shinkansen counter</td></tr>
+          <tr><td>Kyoto to Osaka</td><td>&#165;560</td><td>JR Kyoto Line (Suica)</td></tr>
+          <tr><td>Osaka to Hiroshima (Shinkansen)</td><td>&#165;10,440</td><td>Buy at Shinkansen counter</td></tr>
+          <tr><td>Hiroshima to Tokyo (Shinkansen)</td><td>&#165;19,440</td><td>Buy at Shinkansen counter</td></tr>
+          <tr><td>Miyajima JR Ferry x2</td><td>&#165;720</td><td>Buy at pier</td></tr>
+          <tr class="tot"><td>Shinkansen total pp</td><td>&#165;44,930</td><td>+ Suica &#165;10,000</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="alert alert-g"><span class="alert-ic">&#9432;&#65039;</span><div>Buy Shinkansen tickets at the JR ticket counter at each station. No advance online booking needed — just purchase at the counter before boarding.</div></div>
+
+    <div class="slbl">City Transport Tips</div>
+    <div class="card" style="border-left:3px solid var(--bl)">
+      <div style="font-size:13px;font-weight:800;color:var(--bl);margin-bottom:8px">&#128508; Tokyo</div>
+      <ul class="ilist">
+        <li>Suica covers all Tokyo Metro, Toei, JR Yamanote and Keisei lines</li>
+        <li>DisneySea (23 Sep) &mdash; Keiyo Line from Tokyo Station to Maihama, then Disney Resort Line <a href="https://www.google.com/maps/search/?api=1&query=Maihama+Station+Chiba+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Katsushika (Stay 2) to Narita &mdash; Keisei Line direct, approx. 60 min</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--ac2)">
+      <div style="font-size:13px;font-weight:800;color:var(--ac2);margin-bottom:8px">&#9961;&#65039; Kyoto</div>
+      <ul class="ilist">
+        <li>Buy a &#165;700 bus day pass at Kyoto Station bus terminal for Days 4 and 5</li>
+        <li>Fushimi Inari &mdash; JR Nara Line from Kyoto Station (Suica) <a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Arashiyama &mdash; JR Sagano Line (Suica) <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Kyoto" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Masjid Kyoto &mdash; 10 min walk from Kamigyo Ward base <a href="https://www.google.com/maps/search/?api=1&query=Masjid+Kyoto+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gn)">
+      <div style="font-size:13px;font-weight:800;color:var(--gn);margin-bottom:8px">&#127750; Osaka</div>
+      <ul class="ilist">
+        <li>Osaka Metro 1-day pass &#165;820 &mdash; good value for 4+ metro trips in one day</li>
+        <li>Sumiyoshi Taisha &mdash; Nankai Main Line from Namba (Suica) <a href="https://www.google.com/maps/search/?api=1&query=Sumiyoshi+Taisha+Osaka" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Osaka Aquarium &mdash; Chuo Line to Osakako Station <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Aquarium+Kaiyukan+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--rd)">
+      <div style="font-size:13px;font-weight:800;color:var(--rd);margin-bottom:8px">&#128054; Hiroshima</div>
+      <ul class="ilist">
+        <li>City trams cover the city centre &mdash; buy a &#165;700 day pass on board</li>
+        <li>Miyajima &mdash; tram to Hiroshima Port, then JR Ferry to island <a href="https://www.google.com/maps/search/?api=1&query=Miyajima+Island+Hiroshima" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Take the 07:00&ndash;07:30 ferry for low tide and fewer tour groups</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="scr" id="scr-budget">
+  <div class="scrhdr"><h2 class="scr-title">Budget</h2><p class="scr-sub">Estimates per person. All figures approximate.</p></div>
+  <div class="pad">
+    <div class="big-total"><div class="big-num">&#165;263,300</div><div class="big-lbl">Estimated total per person</div></div>
+    <div class="card">
+      <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:8px">Accommodation &mdash; split 5 ways</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Stay</th><th>Nights</th><th>Unit/night</th><th>Per person</th></tr></thead>
+        <tbody>
+          <tr><td>Tokyo Stay 1</td><td>2</td><td>&#165;20,000</td><td>&#165;4,000</td></tr>
+          <tr><td>Kyoto</td><td>3</td><td>&#165;16,000</td><td>&#165;3,200</td></tr>
+          <tr><td>Osaka</td><td>3</td><td>&#165;14,000</td><td>&#165;2,800</td></tr>
+          <tr><td>Hiroshima</td><td>1</td><td>&#165;11,000</td><td>&#165;2,200</td></tr>
+          <tr><td>Tokyo Stay 2</td><td>5</td><td>&#165;20,000</td><td>&#165;4,000</td></tr>
+          <tr class="tot"><td>Total</td><td>14</td><td>&mdash;</td><td>~&#165;40,800</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:8px">Transport &mdash; per person</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Item</th><th>Cost</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Suica IC Card</td><td>&#165;10,000</td><td>Load at Narita</td></tr>
+          <tr><td>Tokyo&ndash;Kyoto Shinkansen</td><td>&#165;13,320</td><td>Individual ticket</td></tr>
+          <tr><td>Kyoto&ndash;Osaka JR</td><td>&#165;560</td><td>Suica</td></tr>
+          <tr><td>Osaka&ndash;Hiroshima Shinkansen</td><td>&#165;10,440</td><td>Individual ticket</td></tr>
+          <tr><td>Hiroshima&ndash;Tokyo Shinkansen</td><td>&#165;19,440</td><td>Individual ticket</td></tr>
+          <tr><td>Miyajima Ferry x2</td><td>&#165;720</td><td>Buy at pier</td></tr>
+          <tr><td>Kyoto bus pass x2</td><td>&#165;1,400</td><td>Days 4 &amp; 5</td></tr>
+          <tr><td>Hiroshima tram day pass</td><td>&#165;700</td><td>Day 9</td></tr>
+          <tr><td>Miscellaneous</td><td>~&#165;3,000</td><td>Estimate</td></tr>
+          <tr class="tot"><td>Transport total</td><td>~&#165;59,580</td><td>Per person</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:8px">Key attraction costs</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Attraction</th><th>Cost pp</th></tr></thead>
+        <tbody>
+          <tr><td>DisneySea (23 Sep)</td><td>&#165;10,900+</td></tr>
+          <tr><td>teamLab BioVortex Kyoto</td><td>~&#165;3,200</td></tr>
+          <tr><td>Shibuya Sky</td><td>&#165;2,000</td></tr>
+          <tr><td>Tokyo Skytree</td><td>&#165;2,100&ndash;3,400</td></tr>
+          <tr><td>Kinkaku-ji and Kiyomizu-dera</td><td>&#165;1,000</td></tr>
+          <tr><td>Osaka Castle and Nijo Castle</td><td>&#165;1,600</td></tr>
+          <tr><td>Osaka Aquarium Kaiyukan</td><td>&#165;2,400</td></tr>
+          <tr><td>Peace Memorial Museum</td><td>&#165;200</td></tr>
+          <tr class="tot"><td>Attractions estimate</td><td>~&#165;23,400</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:8px">Full trip estimate &mdash; per person</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Category</th><th>Estimate</th></tr></thead>
+        <tbody>
+          <tr><td>Accommodation (14 nights)</td><td>~&#165;40,800</td></tr>
+          <tr><td>Transport (Suica + tickets)</td><td>~&#165;59,580</td></tr>
+          <tr><td>Halal dining (~&#165;3,000/day)</td><td>~&#165;45,000</td></tr>
+          <tr><td>Attractions</td><td>~&#165;23,400</td></tr>
+          <tr><td>Shopping allowance</td><td>~&#165;80,000</td></tr>
+          <tr class="tot"><td>Total estimate</td><td>~&#165;248,780</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="alert alert-y"><span class="alert-ic">&#9888;&#65039;</span><div>All figures are estimates. Verify current prices before departure.</div></div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="scr" id="scr-tips">
+  <div class="scrhdr"><h2 class="scr-title">Tips &amp; Checklist</h2><p class="scr-sub">Tap any item to tick it off</p></div>
+  <div class="pad">
+    <div class="slbl" style="margin-top:0">Pre-departure checklist</div>
+    <div id="clCont">
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">DisneySea tickets &mdash; 23 September</div><div class="cl-s">Book via the Tokyo Disney Resort app now. Premier Access fast-passes sell out within minutes of opening.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">teamLab BioVortex Kyoto &mdash; 25 September evening</div><div class="cl-s">Timed entry. Book at teamLab.art. Slots fill well in advance.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Shibuya Sky &mdash; book online</div><div class="cl-s">Pre-book to skip the queue. &#165;2,000 per person.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Tokyo Skytree &mdash; Tembo Galleria</div><div class="cl-s">Book online to guarantee entry. &#165;2,100&ndash;3,400 per person.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Osaka Aquarium Kaiyukan</div><div class="cl-s">Buy tickets online in advance to skip the queue at the door.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">eSIM or Pocket WiFi</div><div class="cl-s">Order an eSIM before departure for instant connectivity on landing. Or collect Pocket WiFi at Narita arrivals hall.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Google Maps offline &mdash; download all 4 cities</div><div class="cl-s">Download Tokyo, Kyoto, Osaka, and Hiroshima offline maps before flying. Works in tunnels and areas with no signal.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Muslim Pro app</div><div class="cl-s">Prayer times, qibla direction, and nearest mosque finder. Essential for the trip.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">HalalNavi app</div><div class="cl-s">Certified halal restaurant finder for Japan. Always verify halal status on arrival &mdash; certification can change.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Cash &mdash; carry &#165;5,000&ndash;10,000 at all times</div><div class="cl-s">Shrines, markets, and small restaurants are often cash-only. 7-Bank ATMs inside 7-Eleven are most reliable for South African cards.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Power bank &mdash; 10,000mAh or more</div><div class="cl-s">15,000&ndash;25,000 steps per day will drain your phone. Essential for DisneySea and Miyajima full days.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Comfortable walking shoes &mdash; broken in before Day 1</div><div class="cl-s">Do not try new shoes in Japan. Break them in at home several weeks before departure.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Confirm Stumptown Coffee and Clarks Flagship addresses</div><div class="cl-s">Verify current Tokyo locations on their respective websites before Day 12.</div></div></div>
+      <div class="cl-item" onclick="toggleCL(this)"><div class="cl-box">&#10003;</div><div class="cl-con"><div class="cl-t">Verify Tendon Itsuki Ginza halal status</div><div class="cl-s">Confirm halal certification status before visiting on Day 14.</div></div></div>
+    </div>
+
+    <div class="slbl">Prayer schedule</div>
+    <div class="card">
+      <ul class="ilist">
+        <li>Tokyo Camii &mdash; Jumu'ah 12:30 pm &middot; Days 2 &amp; 11 <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Camii+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Masjid Kyoto &mdash; Jumu'ah 12:30 pm &middot; Day 4 <a href="https://www.google.com/maps/search/?api=1&query=Masjid+Kyoto+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Osaka Masjid (Nishi-ku) &mdash; Jumu'ah 12:30 pm &middot; Day 7 <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Masjid+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Narita Airport T1 &mdash; Prayer room and wudu facilities on Days 1 &amp; 15 <a href="https://www.google.com/maps/search/?api=1&query=Narita+Airport+Terminal+1+Japan" target="_blank" class="mlink">&#128205; Map</a></li>
+        <li>Key phrase: <strong>&ldquo;Halal desu ka?&rdquo;</strong> &mdash; Is this halal?</li>
+      </ul>
+    </div>
+
+    <div class="slbl">Tax-free shopping</div>
+    <div class="card">
+      <ul class="ilist">
+        <li>Show your passport at Red Wing, BEAMS, New Era, Hinoya Denim, Clarks, Uniqlo and Isetan for instant 10% refund on purchases over &#165;5,000</li>
+        <li>Keep all tax-refund envelopes sealed until Narita customs before passport control</li>
+        <li>Tax-refund desk is before passport control at Narita Terminal 1</li>
+      </ul>
+    </div>
+
+    <div class="slbl">Daily savings</div>
+    <div class="card">
+      <ul class="ilist">
+        <li>Breakfast at 7-Eleven or FamilyMart &mdash; onigiri, miso soup, yoghurt saves &#165;800&ndash;1,500 per person per day</li>
+        <li>Airbnb stays with kitchen = significant savings for the group over 14 nights</li>
+        <li>Don Quijote (Donki) app &mdash; discount coupons; open 24 hours nationwide</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<nav class="bnav">
+  <button class="bnb active" id="bn-home" onclick="go('home')"><span class="ic">&#127968;</span>Home</button>
+  <button class="bnb" id="bn-plan" onclick="go('plan')"><span class="ic">&#128197;</span>Plan</button>
+  <button class="bnb" id="bn-stays" onclick="go('stays')"><span class="ic">&#127760;</span>Stays</button>
+  <button class="bnb" id="bn-places" onclick="go('places')"><span class="ic">&#128205;</span>Places</button>
+  <button class="bnb" id="bn-move" onclick="go('move')"><span class="ic">&#128645;</span>Move</button>
+  <button class="bnb" id="bn-budget" onclick="go('budget')"><span class="ic">&#165;</span>Budget</button>
+  <button class="bnb" id="bn-tips" onclick="go('tips')"><span class="ic">&#9989;</span>Tips</button>
+</nav>
+
+<script>
+// COUNTDOWN
+(function(){
+  var trip=new Date('2026-09-21T09:50:00+02:00');
+  function upd(){
+    var now=new Date(),diff=trip-now,d=Math.ceil(diff/864e5);
+    var n=document.getElementById('cdNum'),l=document.getElementById('cdLbl'),b=document.getElementById('cdBox');
+    if(diff<=0){n.textContent='0';l.textContent='Trip has started!';return;}
+    n.textContent=d;
+    l.textContent=d===1?'day until departure':'days until departure';
+  }
+  upd();setInterval(upd,60000);
+})();
+
+// NAVIGATION
+var cur='home';
+function go(id){
+  document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('active')});
+  document.querySelectorAll('.hnb').forEach(function(b){b.classList.remove('active')});
+  document.querySelectorAll('.bnb').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('scr-'+id).classList.add('active');
+  var h=document.querySelector('.hnb[onclick*="\''+id+'\'"]');
+  if(h)h.classList.add('active');
+  var bn=document.getElementById('bn-'+id);
+  if(bn)bn.classList.add('active');
+  document.getElementById('mc').scrollTop=0;
+  cur=id;
+}
+
+// DAY CARDS
+function toggleD(hdr){
+  var body=hdr.nextElementSibling,chev=hdr.querySelector('.dc-chev');
+  var open=body.classList.toggle('open');
+  chev.classList.toggle('open',open);
+  hdr.setAttribute('aria-expanded',String(open));
+}
+function expandAll(){
+  document.querySelectorAll('#dayCont .dc').forEach(function(c){
+    if(c.style.display!=='none'){
+      var b=c.querySelector('.dc-body'),ch=c.querySelector('.dc-chev'),h=c.querySelector('.dc-hdr');
+      b.classList.add('open');ch.classList.add('open');h.setAttribute('aria-expanded','true');
+    }
+  });
+}
+function collapseAll(){
+  document.querySelectorAll('#dayCont .dc').forEach(function(c){
+    var b=c.querySelector('.dc-body'),ch=c.querySelector('.dc-chev'),h=c.querySelector('.dc-hdr');
+    b.classList.remove('open');ch.classList.remove('open');h.setAttribute('aria-expanded','false');
+  });
+}
+function filterDays(city,btn){
+  document.querySelectorAll('#dayChips .chip').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  document.querySelectorAll('#dayCont .dc').forEach(function(c){
+    c.style.display=(city==='all'||c.dataset.city.includes(city))?'':'none';
+  });
+}
+
+// STAYS
+function filterStays(s,btn){
+  document.querySelectorAll('#scr-stays .chips .chip').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  document.querySelectorAll('.stay-card').forEach(function(c){
+    c.style.display=(s==='all'||c.dataset.stay===s)?'':'none';
+  });
+}
+
+// PLACES
+var pCity='all',pCat='all';
+function applyPF(){
+  document.querySelectorAll('#plCont .pc').forEach(function(c){
+    var ci=c.dataset.city,ca=c.dataset.cat;
+    c.style.display=((pCity==='all'||ci===pCity)&&(pCat==='all'||ca===pCat))?'':'none';
+  });
+}
+function fPC(city,btn){
+  document.querySelectorAll('#pCityChips .chip').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');pCity=city;applyPF();
+}
+function fPCat(cat,btn){
+  document.querySelectorAll('#pCatChips .chip').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');pCat=cat;applyPF();
+}
+
+// CHECKLIST
+function toggleCL(item){
+  item.classList.toggle('done');
+  try{
+    var s=[];
+    document.querySelectorAll('.cl-item').forEach(function(i){s.push(i.classList.contains('done'))});
+    localStorage.setItem('j26cl',JSON.stringify(s));
+  }catch(e){}
+}
+(function(){
+  try{
+    var sv=localStorage.getItem('j26cl');
+    if(sv){var st=JSON.parse(sv),items=document.querySelectorAll('.cl-item');
+    items.forEach(function(item,i){if(st[i])item.classList.add('done')});}
+  }catch(e){}
+})();
+</script>
+</div>
+</body>
+</html>
